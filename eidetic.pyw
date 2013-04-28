@@ -29,7 +29,8 @@ class Window(QtGui.QDialog, Ui_Dialog):
         self.timer.start()
 
     def take_screenshot(self):
-        self.screenshot = QtGui.QPixmap.grabWindow(QtGui.QApplication.desktop().winId())
+        desktop = QtGui.QApplication.desktop()
+        self.screenshot = QtGui.QPixmap.grabWindow(desktop.winId(), 0, 0, desktop.width(), desktop.height())
         filename = datetime.now().strftime("./screenshots/%Y-%m-%d-%H-%M-%S.png")
         self.screenshot.save(filename, "png")
 
@@ -79,8 +80,7 @@ if __name__ == '__main__':
     app = QtGui.QApplication(sys.argv)
 
     if not QtGui.QSystemTrayIcon.isSystemTrayAvailable():
-        QtGui.QMessageBox.critical(None, "Systray",
-                                   "I couldn't detect any system tray on this system.")
+        QtGui.QMessageBox.critical(None, "Systray", "I couldn't detect any system tray on this system.")
         sys.exit(1)
 
     QtGui.QApplication.setQuitOnLastWindowClosed(False)
