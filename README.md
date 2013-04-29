@@ -8,12 +8,16 @@ The name Eidetic comes from [Eidetic Memory](http://en.wikipedia.org/wiki/Eideti
 ## Features
 
 [X] Take screenshots periodically
+
 [X] Configurable time slice
+
 [ ] Configurable screenshots path
+
 [ ] Support for multiple monitors
+
 [ ] Don't take screenshots if the user is not active
 
-# Copyrights
+## Copyrights
 Do whatever you want with it.
 
 The code is based on SysTray & Screenshot examples of PyQt, which are under BSD license.

@@ -1,9 +1,8 @@
-# This is based
-
 # This is only needed for Python v2 but is harmless for Python v3.
 import sip
 sip.setapi('QVariant', 2)
 
+import os
 from datetime import datetime
 from PyQt4 import QtGui, QtCore
 from eidetic_ui import Ui_Dialog
@@ -15,7 +14,6 @@ class Window(QtGui.QDialog, Ui_Dialog):
         self.setupUi(self)
         self.createActions()
         self.createTrayIcon()
-        self.trayIcon.setVisible(True)
         self.timer = QtCore.QTimer(self)
         self.timer.setInterval(60 * 1000)
         self.timer.timeout.connect(self.take_screenshot)
@@ -31,7 +29,9 @@ class Window(QtGui.QDialog, Ui_Dialog):
     def take_screenshot(self):
         desktop = QtGui.QApplication.desktop()
         self.screenshot = QtGui.QPixmap.grabWindow(desktop.winId(), 0, 0, desktop.width(), desktop.height())
-        filename = datetime.now().strftime("./screenshots/%Y-%m-%d-%H-%M-%S.png")
+        filename = datetime.now().strftime("./screenshots/%Y-%m-%d/%H-%M-%S.png")
+        if not os.path.exists(os.path.dirname(filename)):
+            os.makedirs(os.path.dirname(filename))
         self.screenshot.save(filename, "png")
 
     def enable(self):
@@ -72,6 +72,7 @@ class Window(QtGui.QDialog, Ui_Dialog):
 
         self.trayIcon = QtGui.QSystemTrayIcon(self)
         self.trayIcon.setContextMenu(self.trayIconMenu)
+        self.trayIcon.setVisible(True)
 
 
 if __name__ == '__main__':
