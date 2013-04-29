@@ -29,10 +29,10 @@ class Window(QtGui.QDialog, Ui_Dialog):
     def take_screenshot(self):
         desktop = QtGui.QApplication.desktop()
         self.screenshot = QtGui.QPixmap.grabWindow(desktop.winId(), 0, 0, desktop.width(), desktop.height())
-        filename = datetime.now().strftime("./screenshots/%Y-%m-%d/%H-%M-%S.png")
+        filename = datetime.now().strftime("./screenshots/%Y-%m-%d/%H-%M-%S.jpg")
         if not os.path.exists(os.path.dirname(filename)):
             os.makedirs(os.path.dirname(filename))
-        self.screenshot.save(filename, "png")
+        self.screenshot.save(filename, "jpg")
 
     def enable(self):
         self.is_enabled = not self.is_enabled
