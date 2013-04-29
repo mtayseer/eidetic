@@ -7,15 +7,15 @@ The name Eidetic comes from [Eidetic Memory](http://en.wikipedia.org/wiki/Eideti
 
 ## Features
 
-[X] Take screenshots periodically
+- [X] Take screenshots periodically
 
-[X] Configurable time slice
+- [X] Configurable time slice
 
-[ ] Configurable screenshots path
+- [ ] Configurable screenshots path
 
-[ ] Support for multiple monitors
+- [ ] Support for multiple monitors
 
-[ ] Don't take screenshots if the user is not active
+- [ ] Don't take screenshots if the user is not active
 
 ## Copyrights
 Do whatever you want with it.
